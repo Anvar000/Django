@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+
+
+def sum(request):
+    a = request.GET.get('a')
+    b = request.GET.get('b')
+    return HttpResponse(f'<h1 align="center">a ={int(a)} b = {int(b)} <br> a + b = {int(a)+int(b)}</h1>')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sum/',sum)
 ]
